@@ -49,4 +49,18 @@ public class StrUtils {
 		}
 		return inputStream;
 	}
+	
+	/**
+	 * copy str
+	 * @param str
+	 * @param length
+	 * @return
+	 */
+	public static String copyString(String str, int length) {
+		String result = "";
+		for (int i = 0; i < length; i++) {
+			result += str + ",";
+		}
+		return result.substring(0, result.length() - 1);
+	}
 }
