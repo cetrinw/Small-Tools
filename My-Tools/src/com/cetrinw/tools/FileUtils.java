@@ -62,13 +62,11 @@ public class FileUtils {
 	                    BufferedReader br = new BufferedReader(fr);
 	                    String line = null;
 	                    while ((line = br.readLine()) != null) {
-	                        if (line.trim() != "") {
-	                
+	                        if (line.trim() != "") {	                
 	                            String[] items = line.split(" ");
 	                            for (int i = 0; i < items.length; i++) {
 	                            	list.add(items[i]);
 								}
-  
 	                        }
 	                    }
 	                } catch (IOException e) {
