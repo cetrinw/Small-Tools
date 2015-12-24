@@ -17,38 +17,39 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class ExcelUtils {
 	/**
-	 * ¶ÁÈ¡ExcelÎÄ¼ş,È¡µÃ±í¸ñÄÚÈİ
+	 * ï¿½ï¿½È¡Excelï¿½Ä¼ï¿½,È¡ï¿½Ã±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	 * 
 	 * @param fileName
-	 *            ÎÄ¼şÂ·¾¶
+	 *            ï¿½Ä¼ï¿½Â·ï¿½ï¿½
 	 * @return List<String>
 	 */
 	public List<String> readExcel(String fileName) {
 		List<String> list = new ArrayList<String>();
 
-		Sheet sheet = getWorkbook(fileName).getSheetAt(0); // »ñµÃµÚÒ»¸ö±íµ¥
-		Iterator<Row> rows = sheet.rowIterator(); // »ñµÃµÚÒ»¸ö±íµ¥µÄµü´úÆ÷
+		Sheet sheet = getWorkbook(fileName).getSheetAt(0); // è·å¾—ç¬¬ä¸€ä¸ªè¡¨å•
+		Iterator<Row> rows = sheet.rowIterator(); // è·å¾—ç¬¬ä¸€ä¸ªè¡¨å•çš„è¿­ä»£å™¨
 		while (rows.hasNext()) {
-			Row row = rows.next(); // »ñµÃĞĞÊı¾İ
-			// System.out.println("Row #" + row.getRowNum()); //»ñµÃĞĞºÅ´Ó0¿ªÊ¼
-			Iterator<Cell> cells = row.cellIterator(); // »ñµÃµÚÒ»ĞĞµÄµü´úÆ÷
+			Row row = rows.next(); // è·å¾—è¡Œæ•°æ®
+			// System.out.println("Row #" + row.getRowNum()); //è·å¾—è¡Œå·ä»0å¼€å§‹
+			Iterator<Cell> cells = row.cellIterator(); // è·å¾—ç¬¬ä¸€è¡Œçš„è¿­ä»£å™¨
 			while (cells.hasNext()) {
 				Cell cell = cells.next();
 				if (cell.getColumnIndex() == 2 && cell.getRowIndex() > 1) {
 					list.add(cell.getStringCellValue());
 				}
 				/**
-				 * System.out.println("Cell #" + cell.getColumnIndex()); switch
-				 * (cell.getCellType()) { //¸ù¾İcellÖĞµÄÀàĞÍÀ´Êä³öÊı¾İ case
+				 * System.out.println("Cell #" + cell.getColumnIndex());
+				 * switch (cell.getCellType()) { //æ ¹æ®cellä¸­çš„ç±»å‹æ¥è¾“å‡ºæ•°æ® case
 				 * HSSFCell.CELL_TYPE_NUMERIC:
-				 * System.out.println(cell.getNumericCellValue()); break; case
-				 * HSSFCell.CELL_TYPE_STRING:
-				 * System.out.println(cell.getStringCellValue()); break; case
-				 * HSSFCell.CELL_TYPE_BOOLEAN:
-				 * System.out.println(cell.getBooleanCellValue()); break; case
-				 * HSSFCell.CELL_TYPE_FORMULA:
-				 * System.out.println(cell.getCellFormula()); break; default:
-				 * System.out.println("unsuported sell type"); break; }
+				 * System.out.println(cell.getNumericCellValue()); break;
+				 * case HSSFCell.CELL_TYPE_STRING:
+				 * System.out.println(cell.getStringCellValue()); break;
+				 * case HSSFCell.CELL_TYPE_BOOLEAN:
+				 * System.out.println(cell.getBooleanCellValue()); break;
+				 * case HSSFCell.CELL_TYPE_FORMULA:
+				 * System.out.println(cell.getCellFormula()); break;
+				 * default: System.out.println("unsuported sell type");
+				 * break; }
 				 */
 			}
 		}
@@ -57,7 +58,7 @@ public class ExcelUtils {
 	}
 
 	private static Workbook getWorkbook(String fileName) {
-		boolean isE2007 = false; // ÅĞ¶ÏÊÇ·ñÊÇexcel2007¸ñÊ½
+		boolean isE2007 = false; // åˆ¤æ–­æ˜¯å¦æ˜¯excel2007æ ¼å¼
 		if (fileName.endsWith("xlsx"))
 			isE2007 = true;
 		InputStream input;
@@ -71,7 +72,7 @@ public class ExcelUtils {
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
-		// ¸ù¾İÎÄ¼ş¸ñÊ½(2003»òÕß2007)À´³õÊ¼»¯
+		// æ ¹æ®æ–‡ä»¶æ ¼å¼(2003æˆ–è€…2007)æ¥åˆå§‹åŒ–
 		catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
