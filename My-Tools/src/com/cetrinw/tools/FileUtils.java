@@ -1,16 +1,18 @@
 package com.cetrinw.tools;
 
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
 
 /**
  * File Operate
+ * 
  * @author Cetrin Wang
  *
  */
 public class FileUtils {
-	
+
 	/**
 	 * 将List -> file
 	 * 
@@ -38,6 +40,18 @@ public class FileUtils {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
+		}
+	}
+
+	/**
+	 * Delete file
+	 * @param sPath
+	 */
+	public static void deleteFile(String sPath) {
+		File file = new File(sPath);
+
+		if (file.isFile() && file.exists()) {
+			file.delete();
 		}
 	}
 }
