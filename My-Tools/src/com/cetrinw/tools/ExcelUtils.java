@@ -17,10 +17,10 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class ExcelUtils {
 	/**
-	 * ��ȡExcel�ļ�,ȡ�ñ������
+	 * read excel to list
 	 * 
 	 * @param fileName
-	 *            �ļ�·��
+	 *           
 	 * @return List<String>
 	 */
 	public List<String> readExcel(String fileName) {
