@@ -5,6 +5,8 @@ import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.sql.Blob;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * String operate
@@ -75,6 +77,30 @@ public class StrUtils {
 		}
 		return buffer.toString();
 	}
+	
+	/**
+	 * remove special character by regEx
+	 * @param str
+	 * @return
+	 */
+	public static String formatContent(String str){
+		String content = "";
+		try {
+			if(str == null || "".equals(str)){
+				return "";
+			}else{
+				String regEx_html = "<(.[^>]*)>"; 
+			    Pattern p_html = Pattern.compile(regEx_html,Pattern.CASE_INSENSITIVE); 
+			    Matcher m_html = p_html.matcher(str); 
+			    content = m_html.replaceAll(""); // 
+			    
+			    return content.trim();
+			}
+		} catch (Exception e) {
+			return "";
+		}
+	}
+	
 	/**
 	 * copy str
 	 * @param str
