@@ -5,8 +5,14 @@ import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.sql.Blob;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import org.prepare.utils.DateTimeUtils;
 
 /**
  * String operate
@@ -76,6 +82,42 @@ public class StrUtils {
 			new RuntimeException(e.getMessage());
 		}
 		return buffer.toString();
+	}
+	
+	public static Date str2date(String dateStr) throws ParseException {
+		dateStr = dateStr.replace("/", "-");
+		Calendar cal = Calendar.getInstance();
+		int year = cal.get(Calendar.YEAR);// 获取年份
+		Date date = new Date();
+		String years = new Integer(year).toString().substring(0, 2);
+		String[] dt = dateStr.split(" ");
+		String t = null, d = null;
+		if (dt.length == 2) {
+			d = dt[0];
+			t = dt[1];
+		} else {
+			d = dt[0];
+		}
+		// date 规范
+		String[] da = d.split("-");
+		if (da[0].length() == 2) {// 年
+			da[0] = years + da[0];
+		}
+		d = da[0] + "-" + da[1] + "-" + da[2];
+		if (t != null) {
+			String[] ta = d.split(":");
+			if (ta.length == 2) {// 年
+				t = t + ":00";
+			}
+		}
+		if (d != null && t != null) {
+			dateStr = d + " " + t;
+		} else {
+			dateStr = d + " 00:00:00";
+		}
+		Date time = DateTimeUtils.strToDate(dateStr, new SimpleDateFormat(
+				"yyyy-MM-dd HH:mm:ss"));
+		return time;
 	}
 	
 	/**

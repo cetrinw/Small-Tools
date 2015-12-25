@@ -8,5 +8,6 @@
 	<classpathentry kind="lib" path="lib/readExcel Lib/poi-ooxml-3.13-20150929.jar"/>
 	<classpathentry kind="lib" path="lib/readExcel Lib/poi-ooxml-schemas-3.13-20150929.jar"/>
 	<classpathentry kind="lib" path="lib/readExcel Lib/poi-scratchpad-3.13-20150929.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
