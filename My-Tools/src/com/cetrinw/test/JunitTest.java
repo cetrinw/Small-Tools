@@ -8,10 +8,11 @@ public class JunitTest {
 	@org.junit.Test
 	public void testRegEx() {
 		
-		String regEx = "\\S*\\.[html|shtml|htm|php]";
-		String content1 = "http://google.com";
-		String content2 = "http://cetrinw.com/index.html";
-		String content3 = "http://cetrinw.com/index.php";
+		//xxx.html : xxx.php : xxx.htm ： xxx.shtml
+		String regEx = "\\S+\\.(html|shtml|htm|php)";
+		String content1 = "http://google.com/ind123.php";
+		String content2 = "http://cetrinw.com/ind223ex.html";
+		String content3 = "http://cetrinw.com/ind23ex.htm";
 		
 		
 		Pattern p_html = Pattern.compile(regEx);
