@@ -84,6 +84,24 @@ public class StrUtils {
 		return buffer.toString();
 	}
 	
+	
+	/**
+	 * get NowDate :yyyy-MM-dd
+	 * @return 
+	 * ps.setDate(2, new java.sql.Date(getNowDate().getTime()));
+	 */
+	public static Date getNowDate() {
+		Date d = new Date();
+		System.out.println(d);
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		String str = sdf.format(d);
+		try {
+			return sdf.parse(str);
+		} catch (ParseException e) {
+			return null;
+		}
+	}
+	
 	public static Date str2date(String dateStr) throws ParseException {
 		dateStr = dateStr.replace("/", "-");
 		Calendar cal = Calendar.getInstance();
