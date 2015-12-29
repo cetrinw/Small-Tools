@@ -124,10 +124,28 @@ public final class SortUtil {
 		}
 	}
 	
+	/**
+	 * 冒泡排序
+	 * 时间复杂度O(n) - O(m=n^2)
+	 */
+	public static void mpSort(int[] a){
+		int temp = 0 ;
+		for(int i = a.length -1 ; i >0 ; i--){
+			for(int j = 0 ; j < i ; j++){
+				if(a[j] > a[j+1]){
+					temp = a[j+1]  ;
+					a[j+1] = a[j];
+					a[j] = temp;
+				}
+			}
+		}
+	}
+	
 	//测试
 	public static void main(String[] args) {
 		
 		String[] array = new String[]{"某:0.1018653417","自燃:0.0991048361","仓库:0.0638438061","起火:0.0991048361","原告:0.0766125673","亚麻:0.2831566745"};
+		int[] a = {4,45,6,900,234,32,123,99,31,12,4,7,0,5,1,6,9,0,32,5,235,6789,8,0,5,12,2112,4,12};
 		
 		//1.用Collections.sort()排序
 		ArrayList<String> arrayList = new ArrayList<String>();
@@ -188,7 +206,24 @@ public final class SortUtil {
 		}
 		System.out.println();
 		System.out.println("排序使用时间：" + (end3 - begin3) + "毫秒");
+		System.out.println("===================================================================");
 		
+		long begin4 = System.currentTimeMillis();
+		System.out.println("4.使用冒泡排序：");
+		System.out.print("排序前：");
+		for(int i : a){
+			System.out.print(i+" ");
+		}
+		mpSort(a);
+
+		long end4 = System.currentTimeMillis();
+		System.out.println("");
+		System.out.print("排序后：");
+		for(int i : a){
+			System.out.print(i+" ");
+		}
+		System.out.println("");
+		System.out.println("排序使用时间：" + (end4 - begin4) + "毫秒");
 	}
 	
 }
