@@ -1,7 +1,7 @@
 package com.cetrinw.exercise;
 
 /**
- * 二分查找
+ * 二分查找,适用于有序序列快速查找
  * @author Cetrin Wang
  *
  */
